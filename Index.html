@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BayesDataLab — Consultoría en Ciencia de Datos y Estadística</title>
+  <meta name="description" content="Asesorías y proyectos de Ciencia de Datos y Estadística para tesis, artículos y empresas. Análisis sólidos, comunicación clara y resultados accionables." />
+  <meta name="robots" content="index,follow" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="BayesDataLab — Consultoría en Ciencia de Datos y Estadística" />
+  <meta property="og:description" content="Asesorías y proyectos de Ciencia de Datos y Estadística para tesis, artículos y empresas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://TU_USUARIO.github.io/BayesDataLab/" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=BayesDataLab" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23001F3F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='34' fill='%23FFFFFF'%3EB%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b1020;           /* fondo oscuro elegante */
+      --card:#121830;         /* tarjetas */
+      --muted:#94a3b8;        /* texto secundario */
+      --text:#e6edf6;         /* texto principal */
+      --primary:#5eead4;      /* acento menta */
+      --primary-strong:#2dd4bf;
+      --ring: rgba(94,234,212,.3);
+      --shadow: 0 10px 30px rgba(0,0,0,.4);
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:linear-gradient(180deg,#0b1020 0%, #0e1630 100%);
+      color:var(--text);
+    }
+    a{color:var(--primary); text-decoration:none}
+    a:hover{color:var(--primary-strong)}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(150%) blur(8px); background:rgba(11,16,32,.6); border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.4px}
+    .brand .logo{display:grid; place-items:center; width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#22d3ee,#14b8a6); color:#001b2e; font-weight:900}
+    .navlinks{display:flex; gap:18px}
+    .navlinks a{font-weight:600; font-size:.95rem}
+    .menu-btn{display:none; background:transparent; border:1px solid rgba(148,163,184,.3); color:var(--text); padding:8px 10px; border-radius:10px}
+    @media (max-width:760px){
+      .navlinks{display:none}
+      .menu-btn{display:block}
+      #mobile{display:none; border-top:1px solid rgba(148,163,184,.15)}
+      #mobile a{display:block; padding:14px 0; border-bottom:1px dashed rgba(148,163,184,.12)}
+    }
+    /* Hero */
+    .hero{padding:64px 0 30px}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
+    @media (max-width:960px){.hero-grid{grid-template-columns:1fr}}
+    .kicker{display:inline-block; background:rgba(45,212,191,.12); color:var(--primary); padding:6px 10px; border:1px solid rgba(94,234,212,.25); border-radius:999px; font-size:.85rem; font-weight:700}
+    h1{font-size:clamp(1.9rem, 5vw, 3rem); line-height:1.1; margin:14px 0 10px}
+    .subtitle{color:var(--muted); font-size:1.05rem; margin-bottom:22px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid transparent; box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,#22d3ee,#14b8a6); color:#00222a}
+    .btn.ghost{border-color:rgba(148,163,184,.35)}
+    .mock{
+      background:linear-gradient(135deg,#0f172a,#0a1228); border:1px solid rgba(148,163,184,.18); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
+    }
+    .mock img{width:100%; height:auto; border-radius:12px; border:1px solid rgba(148,163,184,.18)}
+    /* Sections */
+    section{padding:56px 0}
+    .sec-title{font-size:1.7rem; margin:0 0 14px}
+    .lead{color:var(--muted); margin:0 0 28px}
+    .card{background:var(--card); border:1px solid rgba(148,163,184,.18); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)}
+    /* Sobre mí */
+    .about{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center}
+    .about img{width:100%; border-radius:14px; border:1px solid rgba(148,163,184,.2)}
+    @media (max-width:960px){.about{grid-template-columns:1fr}}
+    /* Servicios */
+    .services{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:18px
+    }
+    @media (max-width:1100px){.services{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.services{grid-template-columns:1fr}}
+    .service h3{margin:0 0 6px}
+    .price{margin:10px 0 16px; color:#a7f3d0; font-weight:800}
+    /* Portafolio */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.grid{grid-template-columns:1fr}}
+    .grid .item img{width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.18)}
+    /* Testimonios */
+    .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width:1100px){.quotes{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.quotes{grid-template-columns:1fr}}
+    .quote small{color:var(--muted)}
+    /* Blog */
+    .posts{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width:1100px){.posts{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.posts{grid-template-columns:1fr}}
+    /* Contacto */
+    form{display:grid; gap:12px}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:#0b1329; color:var(--text)
+    }
+    input:focus, textarea:focus{outline:none; box-shadow:0 0 0 4px var(--ring)}
+    textarea{min-height:120px}
+    .alt-contacts{display:flex; gap:12px; flex-wrap:wrap}
+    /* Footer */
+    footer{padding:28px 0; border-top:1px solid rgba(148,163,184,.15); color:var(--muted)}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .foot a{color:var(--muted)}
+    @media (max-width:760px){.foot{flex-direction:column; align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="logo">B</span> BayesDataLab</div>
+      <nav class="navlinks" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="menu-btn" aria-controls="mobile" aria-expanded="false" id="menuBtn">Menú</button>
+    </div>
+    <div class="container" id="mobile" role="region" aria-label="Navegación móvil">
+      <a href="#inicio" onclick="toggleMenu(false)">Inicio</a>
+      <a href="#servicios" onclick="toggleMenu(false)">Servicios</a>
+      <a href="#portafolio" onclick="toggleMenu(false)">Portafolio</a>
+      <a href="#testimonios" onclick="toggleMenu(false)">Testimonios</a>
+      <a href="#blog" onclick="toggleMenu(false)">Blog</a>
+      <a href="#contacto" onclick="toggleMenu(false)">Contacto</a>
+    </div>
+  </header>
+
+  <main id="inicio" class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Consultoría y asesorías 1:1</span>
+          <h1>Asesorías y proyectos de <span style="color:var(--primary)">Ciencia de Datos</span> y <span style="color:var(--primary)">Estadística</span> para tesis, artículos y empresas</h1>
+          <p class="subtitle">Soy <strong>Luis</strong>, egresado de Estadística y estudiante de Maestría en Ciencia de Datos. Ayudo a investigadores, estudiantes y equipos a analizar y comunicar resultados con solidez.</p>
+          <div class="cta">
+            <a class="btn primary" href="#contacto" aria-label="Ir a contacto">📅 Agenda tu asesoría</a>
+            <a class="btn ghost" href="mailto:contacto@bayesdatalab.mx" aria-label="Enviar correo">✉️ Escríbeme</a>
+          </div>
+        </div>
+        <div class="mock" aria-hidden="true">
+          <img src="https://placehold.co/800x520/png?text=BayesDataLab" alt="Ejemplo de dashboard / gráfico" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi">
+      <h2 class="sec-title">Sobre mí</h2>
+      <p class="lead">Formación en <strong>Estadística</strong> y Maestría en curso en <strong>Estadística y Ciencia de Datos</strong>. Experiencia aplicada en retail, investigación y proyectos analíticos. Me enfoco en traducir problemas reales a soluciones cuantitativas y comunicarlas con claridad.</p>
+      <div class="about">
+        <div class="card">
+          <ul>
+            <li>Diseño experimental, inferencia y modelos lineales/mixtos</li>
+            <li>Series de tiempo y pronósticos</li>
+            <li>Machine Learning clásico y evaluación rigurosa</li>
+            <li>Visualización y storytelling de datos</li>
+          </ul>
+        </div>
+        <img src="https://placehold.co/600x420/jpg?text=Tu+foto+profesional" alt="Foto profesional de Luis" />
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios">
+      <h2 class="sec-title">Servicios</h2>
+      <p class="lead">Elige el formato que mejor se adapte a tu necesidad. Todos incluyen una breve reunión de entendimiento y una entrega clara de resultados.</p>
+      <div class="services">
+        <div class="card service">
+          <h3>Asesorías 1 a 1</h3>
+          <p>Sesiones personalizadas para orientar tu análisis, resolver dudas y definir un plan de trabajo.</p>
+          <div class="price">desde $500 MXN</div>
+          <a class="btn primary" href="#contacto">Solicitar servicio</a>
+        </div>
+        <div class="card service">
+          <h3>Proyecto completo</h3>
+          <p>Me hago cargo del análisis de principio a fin: datos, modelo, validación y reporte.</p>
+          <div class="price">presupuesto a medida</div>
+          <a class="btn primary" href="#contacto">Solicitar cotización</a>
+        </div>
+        <div class="card service">
+          <h3>Revisión de tesis/artículos</h3>
+          <p>Chequeo de supuestos, elección de pruebas, redacción de resultados y visualizaciones.</p>
+          <div class="price">desde $800 MXN</div>
+          <a class="btn primary" href="#contacto">Solicitar revisión</a>
+        </div>
+        <div class="card service">
+          <h3>Talleres / Capacitación</h3>
+          <p>Formación práctica para equipos: R, Python, modelos, visualización y buenas prácticas.</p>
+          <div class="price">consultar</div>
+          <a class="btn primary" href="#contacto">Pedir temario</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portafolio / Ejemplos -->
+    <section id="portafolio">
+      <h2 class="sec-title">Portafolio / Ejemplos</h2>
+      <p class="lead">Una muestra de trabajos y entregables. (Puedes usar ejemplos ficticios sin datos sensibles).</p>
+      <div class="grid">
+        <div class="item card">
+          <img src="https://placehold.co/720x420/png?text=ANOVA+%26+Mixtos" alt="Análisis de experimento agrícola" />
+          <h3>Experimento agrícola</h3>
+          <p>ANOVA y modelos mixtos para evaluar tratamientos, con reporte y gráficos.</p>
+        </div>
+        <div class="item card">
+          <img src="https://placehold.co/720x420/png?text=Series+de+Tiempo" alt="Series de tiempo y pronóstico" />
+          <h3>Pronóstico de demanda</h3>
+          <p>ARIMA/ETS con validación temporal y métricas de error (RMSE/MAE).</p>
+        </div>
+        <div class="item card">
+          <img src="https://placehold.co/720x420/png?text=ML+Cl%C3%A1sico" alt="Clasificación" />
+          <h3>Clasificación</h3>
+          <p>Pipeline con partición train/test, comparación de modelos y curva ROC.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios">
+      <h2 class="sec-title">Testimonios</h2>
+      <div class="quotes">
+        <div class="card quote">
+          <p>“Luis me ayudó a organizar mis datos y elegir la prueba correcta para mi tesis. Terminé a tiempo.”</p>
+          <small>— M.G., estudiante de maestría</small>
+        </div>
+        <div class="card quote">
+          <p>“Excelente comunicación y entregables claros. El equipo aplicó de inmediato las recomendaciones.”</p>
+          <small>— R.H., coordinador de proyecto</small>
+        </div>
+        <div class="card quote">
+          <p>“Resolvió un problema de pronóstico que traíamos semanas arrastrando. Muy recomendable.”</p>
+          <small>— E.P., retail</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / Recursos -->
+    <section id="blog">
+      <h2 class="sec-title">Blog / Recursos</h2>
+      <p class="lead">Publica tips, notas y ejemplos. Esto atrae a nuevos clientes y muestra tu forma de trabajar.</p>
+      <div class="posts">
+        <article class="card">
+          <h3><a href="#">3 errores comunes al analizar experimentos</a></h3>
+          <p>Evita confundir bloqueos con tratamientos, reporta supuestos y mide el poder estadístico.</p>
+        </article>
+        <article class="card">
+          <h3><a href="#">Cómo validar un pronóstico de serie de tiempo</a></h3>
+          <p>Split temporal correcto, horizonte rolling y métricas que sí importan.</p>
+        </article>
+        <article class="card">
+          <h3><a href="#">Checklist rápido para tu defensa de tesis</a></h3>
+          <p>Gráficas legibles, supuestos declarados, resultados interpretables y replicabilidad.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <h2 class="sec-title">Contacto</h2>
+      <p class="lead">¿Listo para comenzar? Envíame un mensaje o agenda una llamada. Respondo normalmente el mismo día hábil.</p>
+      <div class="grid">
+        <div class="card">
+          <!-- Reemplaza la acción con tu endpoint de Formspree o similar -->
+          <form action="https://formspree.io/f/TU_ENDPOINT" method="POST">
+            <input type="text" name="name" placeholder="Nombre" required />
+            <input type="email" name="email" placeholder="Correo" required />
+            <textarea name="message" placeholder="Cuéntame brevemente tu proyecto" required></textarea>
+            <button class="btn primary" type="submit">Enviar</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>También puedes…</h3>
+          <div class="alt-contacts">
+            <a class="btn ghost" href="mailto:contacto@bayesdatalab.mx">✉️ contacto@bayesdatalab.mx</a>
+            <!-- Reemplaza con tu número WhatsApp Business (sin signos) -->
+            <a class="btn ghost" href="https://wa.me/5215512345678" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <!-- Reemplaza con tu Calendly si lo usas -->
+            <a class="btn ghost" href="#">📅 Calendly</a>
+            <!-- Reemplaza con tu LinkedIn -->
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">in/LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2025 Luis Hernández — BayesDataLab</div>
+      <div>
+        <a href="#inicio">Inicio</a> · <a href="#servicios">Servicios</a> · <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menú móvil accesible
+    const btn = document.getElementById('menuBtn');
+    const mobile = document.getElementById('mobile');
+    function toggleMenu(force){
+      const willOpen = typeof force === 'boolean' ? force : mobile.style.display !== 'block';
+      mobile.style.display = willOpen ? 'block' : 'none';
+      btn.setAttribute('aria-expanded', willOpen);
+    }
+    btn?.addEventListener('click', () => toggleMenu());
+  </script>
+
+  <!-- Datos estructurados básicos (ajusta URLs y redes) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BayesDataLab",
+    "url": "https://TU_USUARIO.github.io/BayesDataLab/",
+    "logo": "https://TU_USUARIO.github.io/BayesDataLab/favicon.svg",
+    "sameAs": [
+      "https://www.linkedin.com/in/TU_PERFIL"
+    ]
+  }
+  </script>
+</body>
+</html>
