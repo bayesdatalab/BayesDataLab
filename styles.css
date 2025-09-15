@@ -146,3 +146,20 @@ footer{padding:26px 0; border-top:1px solid rgba(159,176,199,.15); color:var(--m
   html{scroll-behavior:auto}
   .reveal{transition:none}
 }
+
+
+/* --- Fix 1: Ocultar el botón "Menú" en escritorio aunque tenga .btn --- */
+.nav .menu{ display:none !important; }
+
+/* Mostrar el botón solo en móvil */
+@media (max-width:760px){
+  .nav .menu{ display:inline-flex !important; }
+}
+
+/* --- Fix 2: Asegurar que el drawer NUNCA aparezca en escritorio --- */
+.drawer{ display:none; }                  /* oculto por defecto */
+@media (min-width:761px){
+  .drawer{ display:none !important; }     /* refuerzo en desktop */
+}
+
+
