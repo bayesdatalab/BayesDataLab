@@ -1,0 +1,163 @@
+/* === Variables y resets === */
+:root{
+  --bg: #0b1020;
+  --panel: #121830;
+  --text: #e6edf6;
+  --muted:#9fb0c7;
+  --accent:#25d0c4;
+  --accent-2:#0ea5a2;
+  --ring: rgba(37,208,196,.35);
+  --maxw: 1040px;
+  --r: 14px;
+  --shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--text); background:linear-gradient(180deg,#0b1020 0%,#0e1630 100%);
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{color:#5fe9df}
+img{max-width:100%; display:block}
+.container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+.hl{color:var(--accent)}
+header{position:sticky; top:0; z-index:50; background:rgba(11,16,32,.6); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid rgba(159,176,199,.15)}
+
+/* ===== Texto justificado ===== */
+p, .lead, li{ text-align: justify; text-justify: inter-word; hyphens: none; word-break: normal; overflow-wrap: break-word; }
+h1, h2, h3{ text-wrap: balance; }
+
+/* ===== Nav ===== */
+.nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+.logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#22d3ee,#14b8a6);color:#001b2e;font-weight:900}
+
+.links{ display:flex; gap:16px; }
+.links a{position:relative; padding:8px 2px; font-weight:600; color:var(--text)}
+.links a::after{content:""; position:absolute; left:0; bottom:-2px; height:2px; width:var(--u,0%); background:var(--accent); transition:width .22s ease}
+.links a:hover::after{--u:100%}
+
+.menu{
+  display:none; align-items:center; gap:8px;
+  padding:8px 12px; border-radius:12px;
+  font-weight:700;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(159,176,199,.25);
+  color:var(--text);
+  backdrop-filter:blur(8px);
+}
+.menu:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--ring); }
+
+/* ===== Móvil ===== */
+@media (max-width:760px){
+  .links{ display:none; }
+  .menu{ display:inline-flex; }
+
+  .drawer{
+    position: fixed;
+    top:64px; left:0; right:0;
+    display:none;
+    background:rgba(11,16,32,.95);
+    border-top:1px solid rgba(159,176,199,.18);
+    padding:10px 20px; z-index:60;
+  }
+  .drawer.open{ display:block; animation: dropdown .18s ease-out; }
+  .drawer a{
+    display:block; padding:14px 0;
+    border-bottom:1px dashed rgba(159,176,199,.12);
+    font-weight:600; color:var(--text);
+  }
+  .drawer a:last-child{ border-bottom:0; }
+
+  @keyframes dropdown{
+    from{ opacity:0; transform:translateY(-8px); }
+    to{   opacity:1; transform:none; }
+  }
+
+  body.no-scroll{ overflow:hidden; }
+}
+
+/* ===== Utilidades ===== */
+section{padding:56px 0; scroll-margin-top:72px}
+h1{font-size:clamp(1.8rem, 4.5vw, 2.8rem); line-height:1.1; margin:12px 0}
+h2{font-size:clamp(1.4rem,3.5vw,2rem); margin:0 0 12px}
+.lead{color:var(--muted); margin:0 0 20px}
+.card{background:var(--panel); border:1px solid rgba(159,176,199,.18); border-radius:var(--r); padding:18px; box-shadow:var(--shadow)}
+.btn{position:relative; display:inline-flex; align-items:center; gap:10px; padding:12px 16px; font-weight:700; border-radius:12px; border:1px solid transparent; background:linear-gradient(135deg,#22d3ee,#14b8a6); color:#00222a; box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .22s ease}
+.btn:hover{transform:translateY(-1px); box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 4px var(--ring)}
+.ghost{background:transparent; border-color:rgba(159,176,199,.35); color:var(--text)}
+.hero{padding:64px 0 24px}
+.hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:22px; align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.mock{border-radius:var(--r); overflow:hidden; border:1px solid rgba(159,176,199,.18)}
+.cta-row{display:flex; gap:10px; flex-wrap:wrap}
+
+/* ===== Servicios ===== */
+.services{ display:grid; gap:18px; grid-template-columns:repeat(2, minmax(0,1fr)); }
+@media (max-width:980px){ .services{ grid-template-columns:1fr; } }
+.service{ display:grid; grid-template-rows:auto 1fr auto auto; gap:10px }
+.service h3{ margin:0 }
+.service .price{ align-self:end; color:#a7f3d0; font-weight:800 }
+.service .cta{ display:flex }
+.features{ list-style:none; margin:8px 0; padding:0; color:var(--muted) }
+.features li{ position:relative; padding-left:22px; margin:8px 0; }
+.features li::before{ content:"✓"; position:absolute; left:0; top:.1rem; color:var(--accent); font-weight:900; }
+.svc-head{ display:flex; align-items:center; gap:10px }
+.svc-icon{ width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,#22d3ee,#14b8a6); color:#001b2e; font-weight:800; }
+
+/* ===== Carrusel ===== */
+.carousel{position:relative; overflow:visible}
+.car-viewport{ overflow-x:auto; overflow-y:hidden; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; padding-bottom:0; scrollbar-width:none; -ms-overflow-style:none; }
+.car-viewport::-webkit-scrollbar{height:0; background:transparent}
+.car-track{ list-style:none; margin:0; padding:0; display:grid; grid-auto-flow:column; gap:var(--gap,16px); grid-auto-columns:calc((100% - (var(--gap,16px) * (var(--cpv,1) - 1)))/var(--cpv,1)); }
+.project{ scroll-snap-align:start }
+.car-btn{ position:absolute; top:50%; transform:translateY(-50%); border:none; width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); color:var(--text); backdrop-filter:blur(6px); box-shadow:var(--shadow); cursor:pointer; }
+.car-btn.prev{left:-22px} .car-btn.next{right:-22px}
+@media (max-width:700px){ .car-btn.prev{left:-12px} .car-btn.next{right:-12px} }
+.car-dots{display:flex; justify-content:center; gap:8px; margin-top:10px}
+.car-dots button{width:8px; height:8px; border-radius:999px; border:none; background:#31405e; cursor:pointer}
+.car-dots button.is-active{background:var(--accent)}
+
+/* ===== Testimonios ===== */
+.quotes{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.quotes{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.quotes{grid-template-columns:1fr}}
+.quote{ display:flex; flex-direction:column; min-height:160px; }
+.quote p{ margin:0 0 12px; flex:1 1 auto; }
+.quote small{ margin-top:auto; display:block; color:var(--muted); }
+
+/* ===== Contacto ===== */
+.grid{display:grid; gap:14px; grid-template-columns:repeat(2,1fr)}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(159,176,199,.25); background:#0b1329; color:var(--text)}
+textarea{min-height:120px}
+.muted{color:var(--muted); margin-top:8px}
+
+/* ===== Footer ===== */
+footer{padding:26px 0; border-top:1px solid rgba(159,176,199,.15); color:var(--muted)}
+.foot{display:flex; align-items:center; justify-content:space-between; gap:12px}
+@media (max-width:700px){.foot{flex-direction:column; align-items:flex-start}}
+
+/* ===== Aparición suave ===== */
+.reveal{opacity:0; transform:translateY(10px); transition:opacity .4s ease, transform .4s ease}
+.reveal.show{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{transition:none}
+}
+
+
+/* --- Fix 1: Ocultar el botón "Menú" en escritorio aunque tenga .btn --- */
+.nav .menu{ display:none !important; }
+
+/* Mostrar el botón solo en móvil */
+@media (max-width:760px){
+  .nav .menu{ display:inline-flex !important; }
+}
+
+/* --- Fix 2: Asegurar que el drawer NUNCA aparezca en escritorio --- */
+.drawer{ display:none; }                  /* oculto por defecto */
+@media (min-width:761px){
+  .drawer{ display:none !important; }     /* refuerzo en desktop */
+}
